@@ -1,0 +1,12 @@
+version: '3.9'
+services:
+  telegram_bot:
+    image: ${BOT_IMAGE}
+    restart: always
+    env_file:
+      - .env
+    volumes:
+      - $SSL_DIR:/source/.ssl
+    ports:
+      - "${TB_SERVER_PORT}:${TB_SERVER_PORT}"
+    command: "python3.10 run.py"
